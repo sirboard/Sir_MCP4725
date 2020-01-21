@@ -1,11 +1,12 @@
-#if ARDUINO >= 100
- #include "Arduino.h"
-#else
- #include "WProgram.h"
-#endif
+#define WRITEDAC_CMD            (0x40)  
+#define WRITEDACEEPROM_CMD      (0x60)  
 
-#include <Wire.h>
+class Sir_MCP4725{
+  private:
+    uint8_t i2c_address;
 
-
-Adafruit_MCP4725::Adafruit_MCP4725() {
-}
+  public:
+    Sir_MCP4725();
+    void init(uint8_t);  
+    void setVoltage(uint16_t, bool);
+};
